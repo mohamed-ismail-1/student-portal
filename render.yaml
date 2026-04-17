@@ -1,0 +1,37 @@
+services:
+  # Backend Service
+  - type: web
+    name: student-backend
+    env: docker
+    dockerContext: backend
+    plan: free
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: student-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: student-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: student-db
+          property: password
+
+  # Frontend Service
+  - type: web
+    name: student-frontend
+    env: docker
+    dockerContext: frontend
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: student-backend
+          type: web
+          property: host
+
+databases:
+  - name: student-db
+    plan: free
