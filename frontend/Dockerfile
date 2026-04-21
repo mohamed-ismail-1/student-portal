@@ -1,17 +1,14 @@
 # Build stage
 FROM node:18-alpine AS build
 WORKDIR /app
-COPY package*.json ./
+# Only copy files from the frontend folder
+COPY frontend/package*.json ./
 RUN npm install
-COPY . .
-# Replace localhost with production API URL during build if needed
-# ARG VITE_API_URL
-# ENV VITE_API_URL=$VITE_API_URL
+COPY frontend/ . 
 RUN npm run build
 
 # Production stage
 FROM nginx:stable-alpine
 COPY --from=build /app/dist /usr/share/nginx/html
-# Add custom nginx config to handle React routing if needed
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
