@@ -1,0 +1,18 @@
+# Node.js
+node_modules/
+dist/
+.env
+
+# Java
+target/
+*.class
+.mvn/
+.settings/
+.classpath
+.project
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.log
