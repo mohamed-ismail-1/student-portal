@@ -40,7 +40,7 @@ services:
         fromService:
           name: student-backend
           type: web
-          property: host
+          property: url
 
 databases:
   - name: student-db
