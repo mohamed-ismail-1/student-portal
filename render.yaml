@@ -7,18 +7,10 @@ services:
     dockerfilePath: backend/Dockerfile
     plan: free
     envVars:
-      - key: DB_HOST
+      - key: MY_JDBC_URL
         fromDatabase:
           name: student-db
-          property: host
-      - key: DB_PORT
-        fromDatabase:
-          name: student-db
-          property: port
-      - key: DB_NAME
-        fromDatabase:
-          name: student-db
-          property: database
+          property: jdbcConnectionString
       - key: SPRING_DATASOURCE_USERNAME
         fromDatabase:
           name: student-db
