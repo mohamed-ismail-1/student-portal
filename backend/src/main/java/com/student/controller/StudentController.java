@@ -10,7 +10,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:5173") // Vite default port
+@CrossOrigin(origins = "*") // Allow all origins for production testing
 public class StudentController {
 
     @Autowired
