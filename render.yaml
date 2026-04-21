@@ -4,6 +4,7 @@ services:
     name: student-backend
     env: docker
     dockerContext: backend
+    dockerfilePath: ./Dockerfile
     plan: free
     envVars:
       - key: SPRING_DATASOURCE_URL
@@ -24,6 +25,7 @@ services:
     name: student-frontend
     env: docker
     dockerContext: frontend
+    dockerfilePath: ./Dockerfile
     plan: free
     envVars:
       - key: VITE_API_URL
