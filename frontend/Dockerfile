@@ -1,7 +1,11 @@
 # Build stage
 FROM node:18-alpine AS build
 WORKDIR /app
-# Only copy files from the frontend folder
+
+# Add this line to accept the variable from Render
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
+
 COPY frontend/package*.json ./
 RUN npm install
 COPY frontend/ . 
